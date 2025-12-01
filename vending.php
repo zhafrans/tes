@@ -56,7 +56,12 @@ if (PHP_SAPI === 'cli') {
     $result = vendingMachine($money);
 
     echo "\nHasil:\n";
-    echo "Input: " . implode(', ', $result['input']) . "\n";
-    echo "Total: " . $result['total'] . "\n";
-    echo "Output: " . implode(', ', $result['output']) . "\n";
+
+    if (isset($result['message'])) {
+        echo "Error: " . $result['message'] . "\n";
+    } else {
+        echo "Input: " . implode(', ', $result['input']) . "\n";
+        echo "Total: " . $result['total'] . "\n";
+        echo "Output: " . implode(', ', $result['output']) . "\n";
+    }
 }

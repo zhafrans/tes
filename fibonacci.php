@@ -32,16 +32,16 @@ if (PHP_SAPI === 'cli') {
 
     $n = (int) $input;
 
-    if ($n < 0) {
-        echo "Error: N tidak boleh negatif\n";
-        exit(1);
-    }
-
     $result = fibonacci($n);
 
     echo "\nHasil:\n";
-    echo "n: " . $result['n'] . "\n";
-    echo "Deret Fibonacci: " . implode(', ', $result['series']) . "\n";
-    echo "Nilai terakhir: " . $result['value'] . "\n";
-    echo "Total sum: " . $result['total'] . "\n";
+
+    if (isset($result['error'])) {
+        echo "Error: " . $result['error'] . "\n";
+    } else {
+        echo "n: " . $result['n'] . "\n";
+        echo "Deret Fibonacci: " . implode(', ', $result['series']) . "\n";
+        echo "Nilai terakhir: " . $result['value'] . "\n";
+        echo "Total sum: " . $result['total'] . "\n";
+    }
 }
